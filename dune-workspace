@@ -1,0 +1,28 @@
+(lang dune 3.0)
+
+(env
+ (dev
+  (flags :standard -warn-error -69)))
+
+(repository
+ (name alice_frozen)
+ (url
+  git+https://github.com/alicecaml/alice-opam-repo#781db10863f3b7a3507842e88d0d3beeebd264ad))
+
+(repository
+ (name upstream_frozen)
+ (url
+  git+https://github.com/ocaml/opam-repository.git#f58d6b68f9dcb4c941646ec578e6520d7573b348))
+
+(repository
+ (name overlay_frozen)
+ (url
+  git+https://github.com/ocaml-dune/opam-overlays.git#2a9543286ff0e0656058fee5c0da7abc16b8717d))
+
+(lock_dir
+ (constraints
+  (ocaml-system
+   (= 5.3.1+relocatable)))
+ (repositories upstream_frozen overlay_frozen alice_frozen)
+ (solver_env
+  (sys-ocaml-version 5.3.1+relocatable)))

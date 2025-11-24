@@ -1,0 +1,41 @@
+(lang package 0.1)
+
+(dependency_hash 6ac6577311db72008bef36f75a8e119b)
+
+(ocaml ocaml-system)
+
+(repositories
+ (complete true)
+ (used
+  ((source
+    https://github.com/ocaml/opam-repository.git#f58d6b68f9dcb4c941646ec578e6520d7573b348))
+  ((source
+    https://github.com/ocaml-dune/opam-overlays.git#2a9543286ff0e0656058fee5c0da7abc16b8717d))
+  ((source
+    https://github.com/alicecaml/alice-opam-repo#781db10863f3b7a3507842e88d0d3beeebd264ad))))
+
+(expanded_solver_variable_bindings
+ (variable_values
+  (with-doc false)
+  (post true)
+  (opam-version 2.2.0))
+ (unset_variables
+  with-test
+  sys-ocaml-libc
+  enable-ocaml-beta-repository
+  dev
+  build))
+
+(solved_for_platforms
+ ((arch x86_64)
+  (os linux)
+  (sys-ocaml-version 5.3.1+relocatable))
+ ((arch arm64)
+  (os linux)
+  (sys-ocaml-version 5.3.1+relocatable))
+ ((arch x86_64)
+  (os macos)
+  (sys-ocaml-version 5.3.1+relocatable))
+ ((arch arm64)
+  (os macos)
+  (sys-ocaml-version 5.3.1+relocatable)))
