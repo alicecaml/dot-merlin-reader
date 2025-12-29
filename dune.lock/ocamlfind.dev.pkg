@@ -1,0 +1,45 @@
+(version dev)
+
+(install
+ (all_platforms
+  (progn
+   (run %{make} install)
+   (when
+    %{pkg:ocaml:preinstalled}
+    (run install -m 0755 ocaml-stub %{bin}/ocaml)))))
+
+(build
+ (all_platforms
+  ((action
+    (progn
+     (run
+      sh
+      configure
+      -bindir
+      %{bin}
+      -sitelib
+      %{lib}
+      -mandir
+      %{man}
+      -config
+      %{lib}/findlib.conf
+      -no-custom
+      (when
+       (catch_undefined_var
+        (and_absorb_undefined_var
+         (not %{pkg:ocaml:preinstalled})
+         (>= %{pkg:ocaml:version} 4.02.0))
+        false)
+       -no-camlp4)
+      (when (catch_undefined_var %{pkg:ocaml:preinstalled} false) -no-topfind))
+     (run %{make} all)
+     (when %{pkg:ocaml:native} (run %{make} opt)))))))
+
+(depends
+ (all_platforms (ocaml)))
+
+(source
+ (fetch
+  (url file://C:/Users/s/dot-merlin-reader/ocamlfind-findlib-1.9.8)))
+
+(dev)
