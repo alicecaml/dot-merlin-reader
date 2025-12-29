@@ -43,7 +43,7 @@ let findlib_ok =
        findlib directory has been removed. *)
     begin
       match Sys.getenv "OCAMLFIND_CONF" with
-      | exception Not_found -> Unix.putenv "OCAMLFIND_CONF" "/dev/null"
+      | exception Not_found -> Unix.putenv "OCAMLFIND_CONF" Filename.null
       | _ -> ()
     end;
     Error ("Error during findlib initialization: " ^ message)
